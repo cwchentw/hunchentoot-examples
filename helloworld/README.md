@@ -33,6 +33,10 @@ Visit http://localhost:8080/ to see its result.
 
 Use C-c to stop the server.
 
+## Note
+
+Hunchentoot and Clozure CL have name collision issues.
+
 ## Copyright
 
 Copyright (c) 2020 Michael Chen. Licensed under MIT.

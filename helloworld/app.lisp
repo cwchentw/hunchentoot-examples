@@ -4,18 +4,19 @@
 
 ; Hunchentoot web server.
 (require "hunchentoot")
-(use-package :hunchentoot)
 
 ; Create a new server instance.
-(defvar *server* (make-instance 'easy-acceptor :port 8080))
+(defvar *server*
+  (make-instance 'hunchentoot:easy-acceptor :port 8080))
 
 ; Handle route to "/".
-(define-easy-handler (index :uri "/") ()
+(hunchentoot:define-easy-handler (index :uri "/") ()
   (setf (hunchentoot:content-type*) "text/plain")
   "Hello World")
 
 (defun main ()
-  (start *server*)
+  (hunchentoot:start *server*)
+  (format *error-output* "Start a web server at http://localhost:8080~%")
   (handler-case
     ; Wait for all threads emitted by Hunchentoot.
     (bt:join-thread
@@ -31,6 +32,6 @@
      #+ecl ext:interactive-interrupt
      #+allegro excl:interrupt-signal
      () (progn
-          (stop *server*)
-          (write-line "")
+          (hunchentoot:stop *server*)
+          (format *error-output* "~%")
           (quit-with-status)))))
