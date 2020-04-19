@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Constants
+SBCL="sbcl"
+CCL="ccl"
+
+lisp=$1;
+
+if [ $SBCL = "$lisp" ] || [ $CCL = "$lisp" ];
+then
+  # Consume first arguemnt.
+  shift;
+else
+  lisp=$SBCL;
+fi
+
+if [ $SBCL = "$lisp" ];
+then
+  sbcl --load quicklisp.lisp \
+       --eval "(load \"quicklisp.lisp\")" \
+       --eval "(quicklisp-quickstart:install :path \"./quicklisp\")" \
+       --eval "(ql:quickload \"hunchentoot\")" \
+       --load app.lisp \
+       --eval "(compile-program \"app\" #'main)"
+fi
