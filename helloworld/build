@@ -17,7 +17,6 @@ fi
 if [ $SBCL = "$lisp" ];
 then
   sbcl --load quicklisp.lisp \
-       --eval "(load \"quicklisp.lisp\")" \
        --eval "(quicklisp-quickstart:install :path \"./quicklisp\")" \
        --eval "(ql:quickload \"hunchentoot\")" \
        --load app.lisp \
