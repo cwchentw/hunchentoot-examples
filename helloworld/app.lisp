@@ -34,4 +34,5 @@
      () (progn
           (hunchentoot:stop *server*)
           (format *error-output* "~%")
-          (quit-with-status)))))
+          (quit-with-status)))
+    (error (e) (format *error-output* "Error: ~a~%" e))))
