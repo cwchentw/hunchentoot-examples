@@ -33,9 +33,10 @@ Visit http://localhost:8080/ to see its result.
 
 Use C-c to stop the server.
 
-## Note
+## Known Issues and Bugs
 
-Hunchentoot and Clozure CL have name collision issues.
+* The web application compiled by Clozure CL cannot quit successfully.
+* Hunchentoot and Clozure CL have name collision issues.
 
 ## Copyright
 
